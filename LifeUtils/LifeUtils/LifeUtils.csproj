@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="IConfigFile.cs" />
     <Compile Include="IniHandler.cs" />
+    <Compile Include="Kleenean.cs" />
     <Compile Include="Localizable.cs" />
     <Compile Include="SafeNativeMethods.cs" />
     <Compile Include="Version.cs" />
