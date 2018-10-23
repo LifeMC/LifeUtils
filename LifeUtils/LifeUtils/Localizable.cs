@@ -16,7 +16,7 @@ namespace LifeUtils
     #endregion
 
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    public class LocalizableAttribute : Attribute
+    public sealed class LocalizableAttribute : Attribute
     {
         /// <inheritdoc />
         /// <summary>

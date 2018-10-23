@@ -20,7 +20,7 @@ namespace LifeUtils
     /// <summary>
     ///     Represents a version.
     /// </summary>
-    public class Version : IEquatable<Version>, IComparable<Version>
+    public sealed class Version : IEquatable<Version>, IComparable<Version>
     {
         /// <summary>
         ///     The regex for parsing versions.
