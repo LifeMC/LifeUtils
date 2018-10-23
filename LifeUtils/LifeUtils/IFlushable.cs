@@ -1,7 +1,7 @@
 ﻿#region Header
 
 // 
-//        LifeUtils - LifeUtils - ITask.cs
+//        LifeUtils - LifeUtils - IFlushable.cs
 //                  24.10.2018 01:48
 
 #endregion
@@ -9,13 +9,13 @@
 namespace LifeUtils
 {
     /// <summary>
-    ///     Represents a runnable task.
+    ///     Represents a flushable object.
     /// </summary>
-    public interface ITask
+    public interface IFlushable
     {
         /// <summary>
-        ///     Runs this task.
+        ///     Flushes this object.
         /// </summary>
-        void Run();
+        void Flush();
     }
 }

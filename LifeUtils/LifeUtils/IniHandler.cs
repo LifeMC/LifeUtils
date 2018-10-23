@@ -2,7 +2,7 @@
 
 // 
 //        LifeUtils - LifeUtils - IniHandler.cs
-//                  23.10.2018 09:12
+//                  24.10.2018 01:48
 
 #endregion
 
@@ -16,10 +16,11 @@ namespace LifeUtils
 
     #endregion
 
+    /// <inheritdoc cref="IConfigFile" />
     /// <summary>
     ///     The .ini file API for C#.
     /// </summary>
-    public sealed class IniHandler : IConfigFile
+    public struct IniHandler : IConfigFile
     {
         /// <summary>
         ///     The .ini file's path / name.

@@ -2,14 +2,14 @@
 
 // 
 //        LifeUtils - LifeUtils - ICloseable.cs
-//                  23.10.2018 09:12
+//                  24.10.2018 01:48
 
 #endregion
 
 namespace LifeUtils
 {
     /// <summary>
-    ///     Represents a closeable type.
+    ///     Represents a closeable object.
     /// </summary>
     public interface ICloseable
     {
@@ -20,7 +20,7 @@ namespace LifeUtils
     }
 
     /// <summary>
-    ///     Represents a closeable type that returns a value after closing.
+    ///     Represents a closeable object that returns a value after closing.
     /// </summary>
     /// <typeparam name="T">The returned values type.</typeparam>
     public interface ICloseable<out T>

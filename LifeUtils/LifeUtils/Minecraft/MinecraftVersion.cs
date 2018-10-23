@@ -2,7 +2,7 @@
 
 // 
 //        LifeUtils - LifeUtils - MinecraftVersion.cs
-//                  23.10.2018 09:12
+//                  24.10.2018 01:48
 
 #endregion
 
@@ -33,10 +33,10 @@ namespace LifeUtils.Minecraft
             new Version(1, 12, 2);
 
         /// <summary>
-        ///     The most recent 1.13.1 version of the Minecraft.
+        ///     The most recent 1.13.2 version of the Minecraft.
         /// </summary>
-        public static readonly Version _1_13_1 =
-            new Version(1, 13, 1);
+        public static readonly Version _1_13_2 =
+            new Version(1, 13, 2);
 
         /// <summary>
         ///     Returns a version matches the given version string.
