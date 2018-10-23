@@ -2,7 +2,7 @@
 
 // 
 //        LifeUtils - LifeUtils - Localizable.cs
-//                  23.10.2018 08:11
+//                  23.10.2018 08:56
 
 #endregion
 

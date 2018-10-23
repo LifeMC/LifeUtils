@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileUtils.cs" />
+    <Compile Include="ICloseable.cs" />
     <Compile Include="IConfigFile.cs" />
+    <Compile Include="IConverter.cs" />
     <Compile Include="IniHandler.cs" />
+    <Compile Include="ITask.cs" />
     <Compile Include="Kleenean.cs" />
     <Compile Include="Localizable.cs" />
     <Compile Include="SafeNativeMethods.cs" />
