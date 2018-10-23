@@ -2,7 +2,7 @@
 
 // 
 //        LifeUtils - LifeUtils - AssemblyInfo.cs
-//                  23.10.2018 07:53
+//                  23.10.2018 08:11
 
 #endregion
 
