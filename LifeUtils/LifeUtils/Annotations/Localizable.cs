@@ -2,11 +2,11 @@
 
 // 
 //        LifeUtils - LifeUtils - Localizable.cs
-//                  24.10.2018 03:24
+//                  24.10.2018 09:40
 
 #endregion
 
-namespace LifeUtils
+namespace LifeUtils.Annotations
 {
     #region Imports
 
@@ -15,6 +15,10 @@ namespace LifeUtils
 
     #endregion
 
+    /// <inheritdoc />
+    /// <summary>
+    ///     Represents a localizable field or property.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public sealed class LocalizableAttribute : Attribute
     {

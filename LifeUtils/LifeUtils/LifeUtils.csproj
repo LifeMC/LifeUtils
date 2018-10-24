@@ -51,7 +51,7 @@
     <Compile Include="IniHandler.cs" />
     <Compile Include="ITask.cs" />
     <Compile Include="Kleenean.cs" />
-    <Compile Include="Localizable.cs" />
+    <Compile Include="Annotations\Localizable.cs" />
     <Compile Include="Minecraft\MinecraftVersion.cs" />
     <Compile Include="SafeNativeMethods.cs" />
     <Compile Include="Version.cs" />
