@@ -16,8 +16,18 @@ namespace LifeUtils
 
     #endregion
 
+    /// <summary>
+    /// File or folder utilities for C#.
+    /// </summary>
     internal static class FileUtils
     {
+        /// <summary>
+        /// Checks if a file exists in the given path.
+        /// If path is null or empty, false is returned.
+        /// Returns false in any exception / error.
+        /// </summary>
+        /// <param name="path">The path to check.</param>
+        /// <returns>True if a file exists in the given path.</returns>
         internal static bool FileExists(string path)
         {
             if (string.IsNullOrEmpty(path)) return false;
@@ -31,6 +41,13 @@ namespace LifeUtils
             }
         }
 
+        /// <summary>
+        /// Gets java installation directory of computer.
+        /// Return value can be null. If it was null,
+        /// we are unable to detect java installation path,
+        /// so the computer doesn't have java or the path is unknown.
+        /// </summary>
+        /// <returns>The java installation path.</returns>
         internal static string GetJavaHome()
         {
             try
@@ -55,6 +72,11 @@ namespace LifeUtils
             }
         }
 
+        /// <summary>
+        /// Deletes a directory in the given path.
+        /// Includes all subdirectories and files, Ignores any exceptions / errors.
+        /// </summary>
+        /// <param name="path">The directories path to delete it.</param>
         internal static void DeleteDirectory(string path)
         {
             foreach (string directory in Directory.GetDirectories(path)) DeleteDirectory(directory);
