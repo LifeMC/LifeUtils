@@ -20,7 +20,7 @@ namespace LifeUtils
     /// <summary>
     ///     File & folder utilities for C#.
     /// </summary>
-    internal static class FileUtils
+    public static class FileUtils
     {
         /// <summary>
         ///     Checks if a file exists in the given path.
@@ -29,7 +29,7 @@ namespace LifeUtils
         /// </summary>
         /// <param name="path">The path to check.</param>
         /// <returns>True if a file exists in the given path.</returns>
-        internal static bool FileExists(string path)
+        public static bool FileExists(string path)
         {
             if (string.IsNullOrEmpty(path)) return false;
             try
@@ -49,7 +49,7 @@ namespace LifeUtils
         ///     so the computer doesn't have java or the path is unknown.
         /// </summary>
         /// <returns>The java installation path.</returns>
-        internal static string GetJavaHome()
+        public static string GetJavaHome()
         {
             try
             {
@@ -163,7 +163,7 @@ namespace LifeUtils
         ///     Includes all subdirectories and files, Ignores any exceptions / errors.
         /// </summary>
         /// <param name="path">The directories path to delete it.</param>
-        internal static void DeleteDirectory(string path)
+        public static void DeleteDirectory(string path)
         {
             foreach (string directory in Directory.GetDirectories(path)) DeleteDirectory(directory);
             try

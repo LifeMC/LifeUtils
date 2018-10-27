@@ -12,7 +12,7 @@ namespace LifeUtils
     ///     Three based version of boolean.
     ///     True, false and unknown. Null equals to unknown.
     /// </summary>
-    internal struct Kleenean
+    public struct Kleenean
     {
         /// <summary>
         ///     The true value of Kleenean.
@@ -38,7 +38,7 @@ namespace LifeUtils
         ///     Creates a new Kleenean from a nullable boolean.
         /// </summary>
         /// <param name="value">The nullable boolean.</param>
-        private Kleenean(bool? value) => _back = value;
+        public Kleenean(bool? value) => _back = value;
 
         /// <summary>
         ///     Converts a nullable boolean value to a Kleenean.
