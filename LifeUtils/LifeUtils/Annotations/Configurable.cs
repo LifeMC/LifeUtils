@@ -1,7 +1,7 @@
 ﻿#region Header
 
 // 
-//        LifeUtils - LifeUtils - Localizable.cs
+//        LifeUtils - LifeUtils - Configurable.cs
 //                  27.10.2018 08:06
 
 #endregion
@@ -17,18 +17,18 @@ namespace LifeUtils.Annotations
 
     /// <inheritdoc />
     /// <summary>
-    ///     Represents a localizable field or property.
+    ///     Represents a configurable field or property.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    public sealed class LocalizableAttribute : Attribute
+    public sealed class ConfigurableAttribute : Attribute
     {
         /// <inheritdoc />
         /// <summary>
-        ///     Generates a new localizable field / property.
+        ///     Generates a new configurable field / property.
         /// </summary>
         /// <param name="key">The key, showed in config.</param>
         /// <param name="value">The default value of the field / property.</param>
-        public LocalizableAttribute(string key = "", string value = "")
+        public ConfigurableAttribute(string key = "", string value = "")
         {
             Key = key;
             Value = value;
@@ -47,12 +47,13 @@ namespace LifeUtils.Annotations
         private string Value { get; }
 
         /// <summary>
-        ///     You must call this before accessing any localizable field / property.
-        ///     This method sets fields / properties to configured / localized versions.
+        ///     You must call this before accessing any configurable field / property.
+        ///     This method sets fields / properties to configured versions.
         /// </summary>
         /// <param name="type">The type to get all properties & fields.</param>
         /// <param name="config">The config file to write or get fields / properties.</param>
-        public static void Init(Type type, IConfigFile config)
+        /// <param name="section">The section to write and get config values.</param>
+        public static void Init(Type type, IConfigFile config, string section = "Options")
         {
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
@@ -63,9 +64,6 @@ namespace LifeUtils.Annotations
             const BindingFlags flags =
                 BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
 
-            const string section =
-                "Localization";
-
             FieldInfo[] fieldInfos =
                 type.GetFields(flags);
 
@@ -73,7 +71,7 @@ namespace LifeUtils.Annotations
                 type.GetProperties(flags);
 
             foreach (FieldInfo fieldInfo in fieldInfos)
-            foreach (LocalizableAttribute attr in fieldInfo.GetCustomAttributes<LocalizableAttribute>(true))
+            foreach (ConfigurableAttribute attr in fieldInfo.GetCustomAttributes<ConfigurableAttribute>(true))
             {
                 if (attr.Key.Equals("")) attr.Key = fieldInfo.Name;
                 if (!config.ContainsKey(attr.Key, section))
@@ -85,7 +83,7 @@ namespace LifeUtils.Annotations
             }
 
             foreach (PropertyInfo propertyInfo in propertyInfos)
-            foreach (LocalizableAttribute attr in propertyInfo.GetCustomAttributes<LocalizableAttribute>(true))
+            foreach (ConfigurableAttribute attr in propertyInfo.GetCustomAttributes<ConfigurableAttribute>(true))
             {
                 if (attr.Key.Equals("")) attr.Key = propertyInfo.Name;
                 if (!config.ContainsKey(attr.Key, section))

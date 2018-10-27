@@ -42,6 +42,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\Annotations.cs" />
+    <Compile Include="Annotations\Configurable.cs" />
     <Compile Include="EnumUtils.cs" />
     <Compile Include="FileUtils.cs" />
     <Compile Include="ICloseable.cs" />

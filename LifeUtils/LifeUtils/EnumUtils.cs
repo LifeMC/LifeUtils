@@ -2,7 +2,7 @@
 
 // 
 //        LifeUtils - LifeUtils - EnumUtils.cs
-//                  24.10.2018 09:39
+//                  27.10.2018 08:06
 
 #endregion
 

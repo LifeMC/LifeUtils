@@ -2,7 +2,7 @@
 
 // 
 //        LifeUtils - LifeUtils - FileUtils.cs
-//                  24.10.2018 09:39
+//                  27.10.2018 08:06
 
 #endregion
 
@@ -11,6 +11,7 @@ namespace LifeUtils
     #region Imports
 
     using System;
+    using System.Diagnostics;
     using System.IO;
     using Microsoft.Win32;
 
@@ -52,11 +53,82 @@ namespace LifeUtils
         {
             try
             {
-                string environmentPath = Environment.GetEnvironmentVariable("JAVA_HOME");
-                if (!string.IsNullOrEmpty(environmentPath) && !string.IsNullOrWhiteSpace(environmentPath))
-                    return environmentPath;
+                string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+                if (!string.IsNullOrEmpty(javaHome) && !string.IsNullOrWhiteSpace(javaHome))
+                    return javaHome;
 
-                const string javaKey = "SOFTWARE\\JavaSoft\\Java Runtime Environment\\";
+                string jreHome = Environment.GetEnvironmentVariable("JRE_HOME");
+                if (!string.IsNullOrEmpty(jreHome) && !string.IsNullOrWhiteSpace(jreHome))
+                    return jreHome;
+
+                string jdkHome = Environment.GetEnvironmentVariable("JDK_HOME");
+                if (!string.IsNullOrEmpty(jdkHome) && !string.IsNullOrWhiteSpace(jdkHome))
+                    return jdkHome;
+
+                string registryPath = GetJavaHomeFromRegistry()?.Trim();
+                if (!string.IsNullOrEmpty(registryPath) && !string.IsNullOrWhiteSpace(registryPath))
+                    return registryPath;
+
+                string processPath = GetJavaHomeFromConsole();
+
+                return !string.IsNullOrEmpty(processPath) && !string.IsNullOrWhiteSpace(processPath)
+                    ? processPath
+                    : null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        ///     Gets the java home from console.
+        ///     It's the most comfortable solution after environment variables.
+        /// </summary>
+        /// <returns>The java home from console.</returns>
+        public static string GetJavaHomeFromConsole()
+        {
+            Process process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    FileName = "cmd.exe",
+                    Arguments = "for %i in (java.exe) do @echo. %-$PATH:i",
+                    RedirectStandardError = true,
+                    RedirectStandardOutput = true
+                }
+            };
+
+            process.Start();
+
+            string javaHome = process.StandardOutput.ReadToEnd();
+
+            try
+            {
+                process.Kill();
+            }
+            catch
+            {
+                /* ignored */
+            }
+
+            return javaHome;
+        }
+
+        /// <summary>
+        ///     Returns the java home from registry.
+        ///     Can be null. You should use GetJavaHome() instead.
+        /// </summary>
+        /// <returns>The java home from registry.</returns>
+        public static string GetJavaHomeFromRegistry()
+        {
+            const string javaKey = @"SOFTWARE\JavaSoft\Java Runtime Environment\";
+
+            try
+            {
                 using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(javaKey))
                 {
                     string currentVersion = rk?.GetValue("CurrentVersion").ToString();
@@ -68,7 +140,21 @@ namespace LifeUtils
             }
             catch
             {
-                return null;
+                try
+                {
+                    using (RegistryKey rk = Registry.CurrentUser.OpenSubKey(javaKey))
+                    {
+                        string currentVersion = rk?.GetValue("CurrentVersion").ToString();
+                        using (RegistryKey key = rk?.OpenSubKey(currentVersion))
+                        {
+                            return key?.GetValue("JavaHome").ToString();
+                        }
+                    }
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 

@@ -2,7 +2,7 @@
 
 // 
 //        LifeUtils - LifeUtils - Version.cs
-//                  24.10.2018 09:39
+//                  27.10.2018 08:06
 
 #endregion
 
@@ -120,6 +120,18 @@ namespace LifeUtils
         /// <param name="other">The other version to check.</param>
         /// <returns>True if the given version equals this version.</returns>
         public bool Equals(Version other) => !(other is null) && CompareTo(other) == 0;
+
+        /// <summary>
+        ///     Generates a new version from a version string.
+        /// </summary>
+        /// <param name="version">The created version object.</param>
+        public static implicit operator Version(string version) => new Version(version);
+
+        /// <summary>
+        ///     Returns display version of a version object.
+        /// </summary>
+        /// <param name="version">The display version of a version object.</param>
+        public static implicit operator string(Version version) => version.ToString();
 
         /// <summary>
         ///     Returns the string representation of this version.
