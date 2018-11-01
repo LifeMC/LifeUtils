@@ -2,7 +2,7 @@
 
 // 
 //        LifeUtils - LifeUtils - MinecraftVersion.cs
-//                  27.10.2018 08:06
+//                  01.11.2018 12:33
 
 #endregion
 
@@ -15,28 +15,10 @@ namespace LifeUtils.Minecraft
     public static class MinecraftVersion
     {
         /// <summary>
-        ///     The legacy 1.7.10 version of Minecraft.
-        /// </summary>
-        public static readonly Version _1_7_10 =
-            new Version(1, 7, 10);
-
-        /// <summary>
-        ///     The popular 1.8.8 version of Minecraft.
-        /// </summary>
-        public static readonly Version _1_8_8 =
-            new Version(1, 8, 8);
-
-        /// <summary>
-        ///     The (also popular) last stable 1.12.2 version of Minecraft.
-        /// </summary>
-        public static readonly Version _1_12_2 =
-            new Version(1, 12, 2);
-
-        /// <summary>
         ///     The most recent version of the Minecraft.
         ///     Note: Changes in every update.
         /// </summary>
-        public static readonly Version LATEST =
+        public static readonly Version Latest =
             new Version(1, 13, 2);
 
         /// <summary>
@@ -54,5 +36,27 @@ namespace LifeUtils.Minecraft
         /// <param name="revision">The revision number of the version, e.g: 2 for 1.12.2.</param>
         /// <returns></returns>
         public static Version From(int major, int minor, int revision) => new Version(major, minor, revision);
+
+        /// <summary>
+        ///     The legacy 1.7.10 version of Minecraft.
+        /// </summary>
+        // ReSharper disable InconsistentNaming
+        #pragma warning disable CS3008
+        public static readonly Version _1_7_10 =
+            new Version(1, 7, 10);
+
+        /// <summary>
+        ///     The popular 1.8.8 version of Minecraft.
+        /// </summary>
+        public static readonly Version _1_8_8 =
+            new Version(1, 8, 8);
+
+        /// <summary>
+        ///     The (also popular) last stable 1.12.2 version of Minecraft.
+        /// </summary>
+        public static readonly Version _1_12_2 =
+            // ReSharper restore InconsistentNaming
+            #pragma warning restore CS3008
+            new Version(1, 12, 2);
     }
 }
