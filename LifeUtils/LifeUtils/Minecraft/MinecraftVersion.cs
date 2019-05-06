@@ -19,7 +19,7 @@ namespace LifeUtils.Minecraft
         ///     Note: Changes in every update.
         /// </summary>
         public static readonly Version Latest =
-            new Version(1, 13, 2);
+            new Version(1, 14);
 
         /// <summary>
         ///     Returns a version matches the given version string.
@@ -50,13 +50,27 @@ namespace LifeUtils.Minecraft
         /// </summary>
         public static readonly Version _1_8_8 =
             new Version(1, 8, 8);
+            
+        /// <summary>
+        ///     The (also popular) 1.8.9 version of Minecraft.
+        /// </summary>
+        public static readonly Version _1_8_9 =
+            new Version(1, 8, 9);
 
         /// <summary>
-        ///     The (also popular) last stable 1.12.2 version of Minecraft.
+        ///     The (also popular) 1.12.2 version of Minecraft.
         /// </summary>
         public static readonly Version _1_12_2 =
             // ReSharper restore InconsistentNaming
             #pragma warning restore CS3008
             new Version(1, 12, 2);
+            
+        /// <summary>
+        ///     The (also popular) last stable 1.13.2 version of Minecraft.
+        /// </summary>
+        public static readonly Version _1_13_2 =
+            // ReSharper restore InconsistentNaming
+            #pragma warning restore CS3008
+            new Version(1, 13, 2);
     }
 }
