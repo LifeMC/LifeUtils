@@ -19,7 +19,7 @@ namespace LifeUtils.Minecraft
         ///     Note: Changes in every update.
         /// </summary>
         public static readonly Version Latest =
-            new Version(1, 14);
+            new Version(1, 14, 4);
 
         /// <summary>
         ///     Returns a version matches the given version string.
