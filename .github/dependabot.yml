@@ -1,0 +1,13 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/LifeUtils/LifeUtils"
+  schedule:
+    interval: daily
+    time: "03:00"
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - TheDGOfficial
+  assignees:
+  - TheDGOfficial
